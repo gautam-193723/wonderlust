@@ -17,7 +17,7 @@ module.exports.signup= async (req,res,next)=>{
             if(err){
                 next(err);
             }
-            req.flash("success","Welcome to InnVantage ");
+            req.flash("success","Welcome to InnVantage");
             res.redirect("/listings")
         })
     }catch(e){
@@ -33,7 +33,7 @@ module.exports.renderloginform=(req,res)=>{
 }
 
 module.exports.login=async (req,res)=>{
-    req.flash("success","Welcome back to InnVantage ")
+    req.flash("success","Welcome back to InnVantage")
     const redirectUrl= res.locals.redirectUrl || "/listings"
     res.redirect(redirectUrl)
 }
