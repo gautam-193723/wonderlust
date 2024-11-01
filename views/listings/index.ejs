@@ -1,0 +1,105 @@
+<% layout("/laytout/boilerplate.ejs") %>
+<% let filters=["Trending","Rooms",'Iconic City',"Castles",
+   "Swimming Pool","Mountains","Camping","Farms","Arctic","Caves","Boat" ] %>
+    <div id="filters">
+      
+        <div class="filter">
+            <a href="/listings/filter/<%=filters[0] %>">
+            <div id="trn"><i class="fa-solid fa-fire"></i>
+            <p>Trending</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[1] %>">
+            <div id="rom"><i class="fa-solid fa-bed"></i>
+            <p >Rooms</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[2] %>">
+            <div id="ico"><i class="fa-solid fa-mountain-city"></i>
+            <p >Iconic City</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[3] %>">
+            <div class="cas"><i class="fa-brands fa-fort-awesome"></i>
+            <p >Castles</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[4] %>">
+            <div id="amp"><i class="fa-solid fa-person-swimming"></i>
+            <p>Swimming Pools</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[5] %>">
+            <div id="mou"><i class="fa-solid fa-mountain-sun"></i>
+            <p>Mountains</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[6] %>">
+            <div id="cam"><i class="fa-solid fa-campground"></i>
+            <p>Camping</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[7] %>">
+            <div id="farms"><i class="fa-solid fa-crop"></i>
+            <p>Farms</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[8] %>">
+            <div id="arc"><i class="fa-regular fa-snowflake"></i>
+            <p>Arctic</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[9] %>">
+            <div id="cav"><i class="fa-solid fa-camera-retro"></i>
+            <p>Caves</p></div>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/filter/<%= filters[10] %>">
+            <div id="bot"><i class="fa-solid fa-ship"></i>
+            <p>Boat</p></div>
+            </a>
+        </div>
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Diaply totol after taxes</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <%for ( let listing of allListing){ %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+                <div class="card listing-card col">
+                    <img src="<%=listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+
+                    <div class="card-img-overlay"> </div>
+                    <div class="card-body">
+                        <h5 class="card-text">
+                            <b>
+                                <%=listing.title%>
+                            </b>
+                        </h5>
+                        <p class="card-price"> &#x20B9; <%= listing.price %>/night <i class="tax-info">&nbsp;+
+                                    18%&nbsp;GST</i>
+                        </p>
+
+                    </div>
+                </div>
+            </a>
+            <%}%>
+    </div>
+
+
+    <script src="/js/taxswitch.js"></script>
+ 

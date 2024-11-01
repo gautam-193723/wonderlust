@@ -1,0 +1,85 @@
+<% layout("/laytout/boilerplate.ejs") %>
+
+    <body>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation"
+            enctype="multipart/form-data">
+            <div class="row mt-3">
+                <div class="col-8 offset-2">
+                    <h2>Edit Listing</h2>
+                    <br>
+                    <div>
+                        <label for="Title" class="form-label">Title</label>
+                        <input type="text" name="Listing[title]" class="form-control" value="<%= listing.title %>"
+                            required>
+                        <div class="invalid-feedback"> Place enter a valid Title</div>
+
+                    </div>
+                    <br />
+                    <div>
+                        <label for="Description" class="form-label">Description</label>
+                        <textarea type="text" name="Listing[description]" class="form-control"
+                            required><%= listing.description %> </textarea>
+                        <div class="invalid-feedback"> Place enter a short Description</div>
+
+                    </div>
+                    <br />
+                    <div>
+                        <h6>Original Listing Image</h6>
+                        <img src="<%= originalurl%> " style="width: 250px; height:250px" alt="">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Image" class="form-label">Upload new Image</label>
+                        <input type="file" name="Listing[image]" class="form-control">
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="Price" class="form-label">Price</label>
+                            <input type="number" name="Listing[price]" class="form-control" value="<%= listing.price %>"
+                                required>
+                            <div class="invalid-feedback"> Place enter a valid Price</div>
+
+                        </div>
+                        <br />
+                        <div class="mb-3 col-md-8">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" name="Listing[location]" class="form-control"
+                                value="<%= listing.location %>" required>
+                            <div class="invalid-feedback"> Place enter a valid location</div>
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="Country" class="form-label">Country</label>
+                            <input type="text" name="Listing[country]" class="form-control"
+                                value="<%= listing.country %>" required>
+                            <div class="invalid-feedback"> Place enter a valid Country Name</div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Feature" class="form-label">Change Category</label>
+                            <select name="Listing[category]" class="form-control form-select" id="Feature">
+                                <option selected="Trending"><%= listing.category %></option>
+                                <option select="Trending">Trending</option>
+                                <option value="Comping">Camping</option>
+                                <option value="Mountains">Mountains</option>
+                                <option value="Iconic City">Iconic City</option>
+                                <option value="Farms">Farms</option>
+                                <option value="Swimming Pool">Swimming Pool</option>
+                                <option value="Rooms">Rooms</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <br />
+                    <button class="btn edit-btn mt-3"> Edit</button>
+        </form>
+        </div>
+        </div>
+        <br>
+    </body>
