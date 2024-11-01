@@ -79,7 +79,7 @@ passport.deserializeUser(User.deserializeUser());//Generates a function that is 
 App.use((req,res,next)=>{
     res.locals.success=req.flash("success")
     res.locals.error=req.flash("error")
-    res.locals.curruser=req.user;
+    res.locals.curruser = req.user || null;
     next();
 })
 // App.get("/",(req,res)=>{
