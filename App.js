@@ -67,13 +67,6 @@ const sessionoptions={
 App.use(session(sessionoptions));
 App.use(flash());
 
-App.use((req,res,next)=>{
-    res.locals.success=req.flash("success")
-    res.locals.error=req.flash("error")
-    res.locals.curruser = req.user
-    next();
-})
-
 App.use(passport.initialize());
 App.use(passport.session());
 //use static authenticate method of model is LocalStrategy
@@ -83,6 +76,12 @@ passport.serializeUser(User.serializeUser());// Generates a function that is use
 passport.deserializeUser(User.deserializeUser());//Generates a function that is used by Passport to deserialize users into the session
 
 
+App.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.curruser = req.User; // Ensures this is set globally for all routes
+    next();
+});
 
 // App.get("/",(req,res)=>{
 //     res.send("Hi, Am root")
